@@ -10,12 +10,12 @@ const MainLayout = (props) => {
     const {children} = props;
 
     const state = {
-        collapsed: false
+        collapsed: true
     };
     const toggle = () => {}
 
     return (
-        <Layout className={styles.mainLayout}>
+        <Layout id="mainLayout">
             <Sider trigger={null} collapsible collapsed={state.collapsed}>
                 <div className="logo"/>
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
