@@ -58,7 +58,7 @@ const MainLayout = (props) => {
                 }}>
                     {children}
                 </Content>
-                <Footer onClick={() => actions.onSwitchSider()}>
+                <Footer>
                     SJGY © 2017
                 </Footer>
             </Layout>

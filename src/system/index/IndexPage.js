@@ -3,7 +3,10 @@ import {connect} from 'dva';
 
 const Index = () => {
   return(
-    <h1>index</h1>
+    <div>
+      <h1>index</h1>
+      <a href="/#/login">login</a>
+    </div>
   );
 }
 

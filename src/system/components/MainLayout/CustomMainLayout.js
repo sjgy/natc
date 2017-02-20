@@ -80,7 +80,7 @@ class CustomMainLayout extends React.Component {
                     }}>
                         {children}
                     </Content>
-                    <Footer onClick={() => actions.onSwitchSider()}>
+                    <Footer>
                         SJGY © 2017
                     </Footer>
                 </Layout>
