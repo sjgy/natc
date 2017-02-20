@@ -7,16 +7,11 @@ import styles from './MainLayout.less';
 
 const MainLayout = (props) => {
 
-    const {children} = props;
-
-    const state = {
-        collapsed: true
-    };
-    const toggle = () => {}
+    const {children,status,actions} = props;
 
     return (
         <Layout id="mainLayout">
-            <Sider trigger={null} collapsible collapsed={state.collapsed}>
+            <Sider trigger={null} collapsible collapsed={status.collapsed}>
                 <div className="logo"/>
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                     <Menu.Item key="1">
@@ -38,9 +33,9 @@ const MainLayout = (props) => {
                     background: '#fff',
                     padding: 0
                 }}>
-                    <Icon className="trigger" type={state.collapsed
+                    <Icon className="trigger" type={status.collapsed
                         ? 'menu-unfold'
-                        : 'menu-fold'} onClick={toggle}/>
+                        : 'menu-fold'} onClick={() => actions.onSwitchSider()}/>
                 </Header>
                 <Content style={{
                     margin: '12px 16px',
@@ -50,7 +45,7 @@ const MainLayout = (props) => {
                 }}>
                     {children}
                 </Content>
-                <Footer>
+                <Footer onClick={() => actions.onSwitchSider()}>
                     SJGY © 2017
                 </Footer>
             </Layout>

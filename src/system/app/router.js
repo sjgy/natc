@@ -3,22 +3,30 @@ import {connect} from 'dva';
 import MainLayout from '../../components/MainLayout/MainLayout';
 import {message} from 'antd';
 
-console.log(MainLayout);
+const App = ({children, location, dispatch, app, status}) => {
 
-const App = ({children, location, dispatch, app}) => {
-
-    const { isAuth, account } = app;
+    const {isAuth, account} = app;
 
     const mainLayoutProps = {
         account,
-        handleLogout: function (e) {
-            e.preventDefault();
-            message.success('Log out successfully :)');
-            dispatch({type: 'app/logout'});
+        status: {
+            collapsed: status.collapsed
+        },
+        actions: {
+            onSwitchSider: function() {
+                dispatch({type: 'status/switchSider'});
+            }
         }
+
     };
 
-    return isAuth ? <MainLayout {...mainLayoutProps}>{children}</MainLayout> : <div/>
+    return isAuth
+        ? <MainLayout {...mainLayoutProps}>{children}</MainLayout>
+        : <div/>
 }
 
-export default connect(({app}) => ({app}))(App);
+const mapStateToProps = (state) => {
+    return {app: state.app, status: state.status}
+}
+
+export default connect(mapStateToProps)(App);
