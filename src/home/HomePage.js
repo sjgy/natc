@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react'
 import {connect} from 'dva'
 
+import './HomePage.less';
+
 function HomePage() {
 
   return (
