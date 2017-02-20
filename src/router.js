@@ -1,38 +1,24 @@
 import React from 'react'
 import {Router} from 'dva/router'
 
+import App from './system/app/router'
+import pushRoutes from './system/router';
+
 export default function({history, app}) {
-    const routes = [
-        {
-            path: '/',
-            getComponent(nextState, cb) {
-                require.ensure([], require => {
-                    cb(null, require('./system/index/IndexPage'))
-                })
+
+    const routes = {
+        component: App,
+        childRoutes: [
+            {
+                path: '/home',
+                getComponent(nextState, cb) {
+                    require.ensure([], require => {
+                        cb(null, require('./home/HomePage'))
+                    })
+                }
             }
-        }, {
-            path: '/login',
-            getComponent(nextState, cb) {
-                require.ensure([], require => {
-                    cb(null, require('./system/auth/login/LoginPage'))
-                })
-            }
-        },{
-            path: '/register',
-            getComponent(nextState, cb) {
-                require.ensure([], require => {
-                    cb(null, require('./system/auth/register/RegisterPage'))
-                })
-            }
-        }, {
-            path: '*',
-            name: 'error',
-            getComponent(nextState, cb) {
-                require.ensure([], require => {
-                    cb(null, require('./system/error/ErrorPage'))
-                })
-            }
-        }
-    ];
-    return <Router history={history} routes={routes}/>
+        ]
+    };
+
+    return <Router history={history} routes={pushRoutes(routes)}/>
 }
