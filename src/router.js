@@ -1,15 +1,14 @@
 import React from 'react'
 import {Router} from 'dva/router'
-import App from './routes/app'
+import App from './app/router'
 
 export default function({history, app}) {
     const routes = [
         {
-            path: '/',
             component: App,
             getIndexRoute(nextState, cb) {
                 require.ensure([], require => {
-                    cb(null, {component: require('./routes/dashboard')})
+                    cb(null, {component: require('./index/router')})
                 })
             }
         }
