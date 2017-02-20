@@ -11,7 +11,7 @@ function LoginLayout(props) {
                 {props.children}
             </Content>
             <Footer className={styles.footer}>
-                <span>@Zhiyu He</span><span>15331097</span>
+                <span>SJGY @ 2017</span>
             </Footer>
         </Layout>
     );
