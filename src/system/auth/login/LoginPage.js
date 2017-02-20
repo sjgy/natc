@@ -1,10 +1,13 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'dva';
+import LoginLayout from '../../../components/LoginLayout/LoginLayout';
 
 const LoginPage = () => {
-  return(
-    <h1>login</h1>
-  );
+    return (
+        <LoginLayout>
+            <div>register</div>
+        </LoginLayout>
+    );
 }
 
 export default connect()(LoginPage);
