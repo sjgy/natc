@@ -27,7 +27,8 @@ const systemRouter = [
 
 const pushRoutes = function(routes) {
 
-    systemRouter.push(routes).push({
+    systemRouter.push(routes);
+    systemRouter.push({
         path: '*',
         name: 'error',
         getComponent(nextState, cb) {
