@@ -11,6 +11,20 @@ export default function({history, app}) {
                 })
             }
         }, {
+            path: '/login',
+            getComponent(nextState, cb) {
+                require.ensure([], require => {
+                    cb(null, require('./system/auth/login/LoginPage'))
+                })
+            }
+        },{
+            path: '/register',
+            getComponent(nextState, cb) {
+                require.ensure([], require => {
+                    cb(null, require('./system/auth/register/RegisterPage'))
+                })
+            }
+        }, {
             path: '*',
             name: 'error',
             getComponent(nextState, cb) {
