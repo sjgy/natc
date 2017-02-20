@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'dva';
-import MainLayout from '../../components/MainLayout/MainLayout';
+import CustomMainLayout from '../components/MainLayout/CustomMainLayout';
 import {message} from 'antd';
 
 const App = ({children, location, dispatch, app, status}) => {
@@ -21,7 +21,7 @@ const App = ({children, location, dispatch, app, status}) => {
     };
 
     return isAuth
-        ? <MainLayout {...mainLayoutProps}>{children}</MainLayout>
+        ? <CustomMainLayout {...mainLayoutProps}>{children}</CustomMainLayout>
         : <div/>
 }
 

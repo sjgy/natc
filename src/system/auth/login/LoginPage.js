@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'dva';
-import LoginLayout from '../../../components/LoginLayout/LoginLayout';
+import LoginLayout from '../../components/LoginLayout/LoginLayout';
 
 const LoginPage = () => {
     return (
