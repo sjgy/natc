@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Layout, Menu, Icon} from 'antd';
-const {Header, Sider, Content} = Layout;
+const {Header, Sider, Content,Footer} = Layout;
 
 import styles from './MainLayout.less';
 
@@ -43,13 +43,16 @@ const MainLayout = (props) => {
                         : 'menu-fold'} onClick={toggle}/>
                 </Header>
                 <Content style={{
-                    margin: '24px 16px',
+                    margin: '12px 16px',
                     padding: 24,
                     background: '#fff',
                     minHeight: 280
                 }}>
                     {children}
                 </Content>
+                <Footer>
+                    SJGY © 2017
+                </Footer>
             </Layout>
         </Layout>
     );
