@@ -3,7 +3,7 @@ export default {
     state : {
         isAuth: true,
         account: {
-            username: null,
+            username: "anonymous",
             ability: null,
             user_id: null,
             email: null

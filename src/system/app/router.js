@@ -15,7 +15,11 @@ const App = ({children, location, dispatch, app, status}) => {
         actions: {
             onSwitchSider: function() {
                 dispatch({type: 'status/switchSider'});
+            },
+            handleClickLogout:function () {
+              console.log('logout');
             }
+
         }
 
     };

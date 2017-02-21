@@ -1,6 +1,8 @@
 import React from 'react';
 
 import {Layout, Menu, Icon} from 'antd';
+import UserInfo from './UserInfo/UserInfo';
+
 const {Header, Sider, Content, Footer} = Layout;
 
 const SubMenu = Menu.SubMenu;
@@ -10,7 +12,7 @@ import styles from './MainLayout.less';
 
 const MainLayout = (props) => {
 
-    const {children, status, actions} = props;
+    const {children, status, actions,account} = props;
 
     let handleClickMenu = e => e.key === 'logout' && logout();
 
@@ -46,23 +48,11 @@ const MainLayout = (props) => {
                 </Menu>
             </Sider>
             <Layout>
-                <Header style={{
-                    background: '#fff',
-                    padding: 0
-                }}>
+                <Header className={styles.header}>
                     <Icon className="trigger" type={status.collapsed
                         ? 'menu-unfold'
                         : 'menu-fold'} onClick={() => actions.onSwitchSider()}/>
-                    <Menu className='header-menu' mode='horizontal' onClick={handleClickMenu}>
-                        <SubMenu style={{
-                            float: 'right'
-                        }} title={< span > <Icon type='user'/>
-                            {user.name} < /span>}>
-                            <Menu.Item key='logout'>
-                                <a>注销</a>
-                            </Menu.Item>
-                        </SubMenu>
-                    </Menu>
+                    <UserInfo account={account} handleClickLogOut={actions.handleClickLogout}/>
                 </Header>
                 <Content style={{
                     margin: '12px 16px',
