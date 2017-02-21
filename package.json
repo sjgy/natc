@@ -37,11 +37,13 @@
     "mockjs": "^1.0.1-beta3",
     "redbox-react": "^1.2.10",
     "robe-ajax": "^1.0.0",
+    "watch": "^1.0.2",
     "watchjs": "^0.0.0"
   },
   "scripts": {
     "start": "dora --plugins \"proxy,webpack,webpack-hmr\"",
-    "dev": "dora --plugins \"webpack,webpack-hmr\"",
+    "face": "dora --plugins \"webpack,webpack-hmr\"",
+    "serv": "dora --plugins proxy",
     "lint": "eslint --fix --ext .js,.jsx src/components/layout",
     "build": "atool-build"
   },

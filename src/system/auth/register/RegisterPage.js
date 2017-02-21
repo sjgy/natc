@@ -32,7 +32,7 @@ const RegisterPage = ({form, dispatch}) => {
 
     function checkPassword(rule, value, callback) {
         if (value && value !== form.getFieldValue('password')) {
-            callback('Two passwords that you enter is inconsistent!');
+            callback('两次输入的密码不匹配!');
         } else {
             callback();
         }
@@ -50,7 +50,7 @@ const RegisterPage = ({form, dispatch}) => {
             span: 6
         },
         wrapperCol: {
-            span: 17
+            span: 14
         }
     };
 
@@ -64,14 +64,14 @@ const RegisterPage = ({form, dispatch}) => {
     return (
         <LoginLayout>
             <div className={styles.container}>
-                <div className={styles.logo}>Welcome to Register!</div>
+                <div className={styles.logo}>注册</div>
                 <Form horizontal onSubmit={handleSubmit}>
-                    <Form.Item {...formItemLayout} label="UserName" hasFeedback>
+                    <Form.Item {...formItemLayout} label="用户名" hasFeedback>
                         {getFieldDecorator('username', {
                             rules: [
                                 {
                                     required: true,
-                                    message: 'Please input your username!'
+                                    message: '请务必输入用户名'
                                 }
                             ]
                         })(
@@ -84,10 +84,10 @@ const RegisterPage = ({form, dispatch}) => {
                             rules: [
                                 {
                                     type: 'email',
-                                    message: 'The input is not valid E-mail!'
+                                    message: 'E-mail格式不合法!'
                                 }, {
                                     required: true,
-                                    message: 'Please input your E-mail!'
+                                    message: '请务必输入E-mail!'
                                 }
                             ]
                         })(
@@ -95,12 +95,12 @@ const RegisterPage = ({form, dispatch}) => {
                         )
 }
                     </Form.Item>
-                    <Form.Item {...formItemLayout} label="Password" hasFeedback>
+                    <Form.Item {...formItemLayout} label="密码" hasFeedback>
                         {getFieldDecorator('password', {
                             rules: [
                                 {
                                     required: true,
-                                    message: 'Please input your password!'
+                                    message: '请务必输入密码!'
                                 }, {
                                     validator: checkConfirm
                                 }
@@ -110,12 +110,12 @@ const RegisterPage = ({form, dispatch}) => {
                         )
 }
                     </Form.Item>
-                    <Form.Item {...formItemLayout} label="Confirm Password" hasFeedback>
+                    <Form.Item {...formItemLayout} label="密码重输" hasFeedback>
                         {getFieldDecorator('confirm', {
                             rules: [
                                 {
                                     required: true,
-                                    message: 'Please confirm your password!'
+                                    message: '请务必确认密码'
                                 }, {
                                     validator: checkPassword
                                 }
@@ -126,9 +126,9 @@ const RegisterPage = ({form, dispatch}) => {
 }
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit" size="large">Register</Button>
-                        <span className={styles.toOther}>Have an account?
-                            <Link to="/login">Log in!</Link>
+                        <Button type="primary" htmlType="submit" size="large">注册</Button>
+                        <span className={styles.toOther}>已有密码？
+                            <Link to="/login">登入</Link>
                         </span>
                     </Form.Item>
                 </Form>
@@ -137,4 +137,4 @@ const RegisterPage = ({form, dispatch}) => {
     );
 }
 
-export default connect(() => ({}))(Form.create()(RegisterPage));
+export default connect((app) => ({app}))(Form.create()(RegisterPage));

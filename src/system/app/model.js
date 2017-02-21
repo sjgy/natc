@@ -1,4 +1,6 @@
+import {queryUser, createUser} from '../services/app';
 import {routerRedux} from 'dva/router';
+import {parse} from 'qs';
 
 export default {
     namespace : 'app',
@@ -11,8 +13,27 @@ export default {
             email: null
         }
     },
+    subscriptions : {
+
+        setup({dispatch}) {
+
+            const dssdata = {
+                "username": "sjgy",
+                "email": "sjgy@sjgy.org",
+                "password": "sjgypassw0rd"
+            }
+
+            dispatch({type: 'register', payload: dssdata});
+        }
+    },
     effects : {
-        *logout({}, {put}){
+        *register({
+            payload
+        }, {put, call}) {
+            const datas = yield call(createUser, parse(payload));
+            console.log(datas);
+        },
+        *logout({}, {put}) {
             yield put({type: 'authFail'});
             yield put(routerRedux.push('/'));
         }
