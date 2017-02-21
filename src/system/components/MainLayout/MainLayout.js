@@ -12,9 +12,7 @@ import styles from './MainLayout.less';
 
 const MainLayout = (props) => {
 
-    const {children, status, actions,account} = props;
-
-    let handleClickMenu = e => e.key === 'logout' && logout();
+    const {children, status, actions, account} = props;
 
     return (
         <Layout id="mainLayout">
@@ -52,7 +50,7 @@ const MainLayout = (props) => {
                     <Icon className="trigger" type={status.collapsed
                         ? 'menu-unfold'
                         : 'menu-fold'} onClick={() => actions.onSwitchSider()}/>
-                    <UserInfo account={account} handleClickLogOut={actions.handleClickLogout}/>
+                    <UserInfo account={account} handleLogout={actions.handleLogout}/>
                 </Header>
                 <Content style={{
                     margin: '12px 16px',

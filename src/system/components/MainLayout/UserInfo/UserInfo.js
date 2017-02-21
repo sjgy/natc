@@ -8,7 +8,7 @@ const SubMenu = Menu.SubMenu;
 
 const UserInfo = ({
     account,
-    handleClickLogout
+    handleLogout
 }) => {
     const {ability, username} = account;
     const tooltipProps = {
@@ -22,7 +22,7 @@ const UserInfo = ({
           float: 'right'
         }} title={<span> <Icon type='user'/> {username} </span>}>
           <Menu.Item key='logout'>
-            <a onClick={handleClickLogout}>注销</a>
+            <a onClick={handleLogout}>注销</a>
           </Menu.Item>
         </SubMenu>
       </Menu>
@@ -31,7 +31,7 @@ const UserInfo = ({
 
 UserInfo.propTypes = {
     account: PropTypes.object.isRequired,
-    handleClickLogOut: PropTypes.func.isRequired
+    handleLogout: PropTypes.func.isRequired
 };
 
 export default UserInfo;
