@@ -15,18 +15,25 @@ export default {
     },
     subscriptions : {
 
-        setup({dispatch}) {
-
-            const dssdata = {
-                "username": "sjgy",
-                "email": "sjgy@sjgy.org",
-                "password": "sjgypassw0rd"
-            }
-
-            dispatch({type: 'register', payload: dssdata});
-        }
+        setup({dispatch}) {}
     },
     effects : {
+        *auth({
+            payload
+        }, {call, put}) {
+            yield put({
+                type: 'authSuccess',
+                payload: {
+                    account: {
+                        username: "eh",
+                        ability: "admin",
+                        user_id: "a128736d",
+                        email: "eh@sjgy.com"
+                    }
+                }
+            });
+            yield put(routerRedux.push('/home'));
+        },
         *register({
             payload
         }, {put, call}) {

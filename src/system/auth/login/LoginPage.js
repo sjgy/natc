@@ -41,11 +41,11 @@ function LoginPage({loading, dispatch, form}) {
                             rules: [
                                 {
                                     required: true,
-                                    message: 'Please input your username!'
+                                    message: '请务必输入用户名!'
                                 }
                             ]
                         })(
-                            <Input addonBefore={< Icon type = "user" />} placeholder="Username"/>
+                            <Input size="large" addonBefore={< Icon type = "user" />} placeholder="Username"/>
                         )
 }
                     </Form.Item>
@@ -54,11 +54,11 @@ function LoginPage({loading, dispatch, form}) {
                             rules: [
                                 {
                                     required: true,
-                                    message: 'Please input your Password!'
+                                    message: '请务必输入密码!'
                                 }
                             ]
                         })(
-                            <Input addonBefore={< Icon type = "lock" />} type="password" placeholder="Password"/>
+                            <Input size="large" addonBefore={< Icon type = "lock" />} type="password" placeholder="Password"/>
                         )
 }
                     </Form.Item>
@@ -67,14 +67,14 @@ function LoginPage({loading, dispatch, form}) {
                             valuePropName: 'checked',
                             initialValue: true
                         })(
-                            <Checkbox disabled>Remember me</Checkbox>
+                            <Checkbox disabled>记住我</Checkbox>
                         )
 }
-                        <span className={styles.toOther}>Or
-                            <Link to="/register">register now!</Link>
+                        <span className={styles.toOther}>或者在此
+                            <Link to="/register"> 注册!</Link>
                         </span>
                         <Button type="primary" htmlType="submit" className={styles.button}>
-                            Log in
+                            登录
                         </Button>
                     </Form.Item>
                 </Form>
@@ -83,4 +83,4 @@ function LoginPage({loading, dispatch, form}) {
     );
 }
 
-export default connect()(Form.create()(LoginPage));
+export default connect((app) => ({app}))(Form.create()(LoginPage));
