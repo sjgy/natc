@@ -12,7 +12,6 @@ const app = dva({
 });
 
 // 2. Model
-app.model(require('./files/model'));
 app.model(require('./system/app/AppModel'));
 app.model(require('./system/app/StatusModel'));
 

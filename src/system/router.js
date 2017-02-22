@@ -29,9 +29,7 @@ const systemRouter = [
 
 const pushRoutes = function(routes) {
 
-    systemRouter.push({component: AppContainer, childRoutes: routes});
-
-    systemRouter.push({
+    routes.push({
         path: '*',
         name: 'error',
         getComponent(nextState, cb) {
@@ -40,6 +38,9 @@ const pushRoutes = function(routes) {
             })
         }
     });
+
+    systemRouter.push({component: AppContainer, childRoutes: routes});
+
     return systemRouter;
 }
 

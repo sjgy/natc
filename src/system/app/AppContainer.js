@@ -26,7 +26,6 @@ class AppContainer extends React.Component {
     }
 
     render() {
-
         return this.props.app.isAuthenticated
             ? <MainLayout {...this.props}/>
             : <div/>

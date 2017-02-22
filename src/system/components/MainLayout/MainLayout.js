@@ -24,7 +24,8 @@ const MainLayout = (props) => {
     const menusProps = {
         darkTheme: status.darkTheme,
         collapsed: status.collapsed,
-        location: location
+        location: location,
+        menus:app.menus
     }
 
     return (
