@@ -1,13 +1,13 @@
 import React from 'react'
 import {Router} from 'dva/router'
 
-import App from './system/app/router'
+import AppContainer from './system/app/AppContainer'
 import pushRoutes from './system/router';
 
 export default function({history, app}) {
 
     const routes = {
-        component: App,
+        component: AppContainer,
         childRoutes: [
             {
                 path: '/home',

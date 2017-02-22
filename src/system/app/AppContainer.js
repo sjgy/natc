@@ -4,7 +4,7 @@ import {connect} from 'dva';
 import MainLayout from '../components/MainLayout/MainLayout';
 import {message} from 'antd';
 
-class AppComponent extends React.Component {
+class AppContainer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -38,4 +38,4 @@ const mapStateToProps = ({app, status}) => {
     return {app: app, status: status}
 }
 
-export default connect(mapStateToProps)(AppComponent);
+export default connect(mapStateToProps)(AppContainer);

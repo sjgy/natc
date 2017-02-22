@@ -54,6 +54,18 @@ const MainLayout = (props) => {
                         <span className="nav-text">nav 3</span>
                     </Menu.Item>
                 </Menu>
+                <Menu theme="dark" mode={status.collapsed
+                    ? 'vertical'
+                    : 'inline'} defaultSelectedKeys={['1']}>
+                    <Menu.Item key="2">
+                        <Icon type="video-camera"/>
+                        <span className="nav-text">nav 2</span>
+                    </Menu.Item>
+                    <Menu.Item key="3">
+                        <Icon type="upload"/>
+                        <span className="nav-text">nav 3</span>
+                    </Menu.Item>
+                </Menu>
             </Sider>
             <Layout>
                 <Header className={styles.header}>
