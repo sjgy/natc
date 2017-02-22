@@ -5,7 +5,7 @@ import {parse} from 'qs';
 export default {
     namespace : 'app',
     state : {
-        isAuth: true,
+        isAuthenticatedenticated: false,
         account: {
             username: null,
             ability: null,
@@ -21,17 +21,21 @@ export default {
         *auth({
             payload
         }, {call, put}) {
-            yield put({
-                type: 'authSuccess',
-                payload: {
-                    account: {
-                        username: "eh",
-                        ability: "admin",
-                        user_id: "a128736d",
-                        email: "eh@sjgy.com"
+
+            if (payload.username === "eh" && payload.password === "123456") {
+                yield put({
+                    type: 'authSuccess',
+                    payload: {
+                        account: {
+                            username: "eh",
+                            ability: "admin",
+                            user_id: "a128736d",
+                            email: "eh@sjgy.com"
+                        }
                     }
-                }
-            });
+                });
+            }
+
             yield put(routerRedux.push('/home'));
         },
         *register({
@@ -51,13 +55,13 @@ export default {
             return {
                 ...state,
                 account,
-                isAuth: true
+                isAuthenticated: true
             };
         },
         hasToken: function(state) {
             return {
                 ...state,
-                isAuth: true
+                isAuthenticated: true
             };
         },
         queryUserSuccess: function(state, {payload}) {
@@ -70,7 +74,7 @@ export default {
         authFail: function(state) {
             return {
                 ...state,
-                isAuth: false,
+                isAuthenticated: false,
                 account: {
                     username: null,
                     ability: null,

@@ -1,36 +1,41 @@
 import React, {PropTypes} from 'react';
+import {routerRedux} from 'dva/router';
 import {connect} from 'dva';
 import MainLayout from '../components/MainLayout/MainLayout';
 import {message} from 'antd';
 
-const App = ({children, location, dispatch, app, status}) => {
+class AppComponent extends React.Component {
 
-    const {isAuth, account} = app;
+    constructor(props) {
+        super(props);
+    }
 
-    const mainLayoutProps = {
-        account,
-        status: {
-            collapsed: status.collapsed
-        },
-        actions: {
-            onSwitchSider: function() {
-                dispatch({type: 'status/switchSider'});
-            },
-            handleLogout: function() {
-                dispatch({type: 'app/logout'});
-            }
+    componentWillMount() {
+        this.checkAuth(this.props.app.isAuthenticated);
+    }
 
+    componentWillReceiveProps(nextProps) {
+        this.checkAuth(nextProps.app.isAuthenticated);
+    }
+
+    checkAuth(isAuthenticated) {
+        if (!isAuthenticated) {
+            let redirectAfterLogin = this.props.location.pathname;
+            this.props.dispatch(routerRedux.push(`/login?next=${redirectAfterLogin}`));
         }
+    }
 
-    };
+    render() {
 
-    return isAuth
-        ? <MainLayout {...mainLayoutProps}>{children}</MainLayout>
-        : <div/>
+        return this.props.app.isAuthenticated
+            ? <MainLayout {...this.props}/>
+            : <div/>
+    }
+
 }
 
-const mapStateToProps = (state) => {
-    return {app: state.app, status: state.status}
+const mapStateToProps = ({app, status}) => {
+    return {app: app, status: status}
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(AppComponent);
