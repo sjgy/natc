@@ -1,5 +1,7 @@
 import React from 'react';
 
+import AppContainer from './app/AppContainer'
+
 const systemRouter = [
     {
         path: '/',
@@ -27,7 +29,8 @@ const systemRouter = [
 
 const pushRoutes = function(routes) {
 
-    systemRouter.push(routes);
+    systemRouter.push({component: AppContainer, childRoutes: routes});
+
     systemRouter.push({
         path: '*',
         name: 'error',

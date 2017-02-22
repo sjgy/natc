@@ -1,7 +1,9 @@
 export default {
     namespace : 'status',
     state : {
-        collapsed: true
+        collapsed: true,
+        darkTheme: true
+
     },
     effects : {
         *switchSider({}, {put}) {
